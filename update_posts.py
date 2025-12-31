@@ -4,7 +4,7 @@ import re
 # Mapping of article slug to the bespoke image filename.  Where an image has
 # already been generated for a particular article, specify it here.  For
 # articles without a unique image (because of rate limits), the default
-# ``article-default.jpg`` will be used.  When additional images are
+# ``article-default.png`` will be used.  When additional images are
 # generated, update this mapping accordingly.
 IMAGES_MAP = {
     'writesonic-vs-grammarly': 'writesonic-vs-grammarly.jpg',

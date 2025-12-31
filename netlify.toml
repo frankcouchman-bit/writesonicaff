@@ -1,0 +1,9 @@
+[build]
+  # Netlify will run this command during the build step. Our build script simply
+  # prints a message because the site is entirely static and requires no
+  # compilation. Feel free to adjust this if you introduce a build pipeline.
+  command = "npm run build"
+
+  # Publish the root of the repository. Netlify will serve the HTML, CSS and
+  # image files directly from this directory.
+  publish = "."

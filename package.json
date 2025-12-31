@@ -1,0 +1,11 @@
+{
+  "name": "ai-writer-hub",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static affiliate website for AI writer tools and Writesonic reviews.",
+  "scripts": {
+    "build": "echo 'No build necessary for this static site'",
+    "start": "node server.js"
+  },
+  "license": "MIT"
+}
