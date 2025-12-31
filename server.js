@@ -2,8 +2,9 @@
  * A lightweight Node.js HTTP server for serving a static affiliate website.
  *
  * This server uses only the built‑in `http` and `fs` modules to serve files
- * from the `public` directory and top‑level HTML pages.  It maps the root
- * URL to `index.html` and will respond with 404 if a file is not found.
+ * from the repository root (including /images) and top‑level HTML pages. It
+ * maps the root URL to `index.html` and will respond with 404 if a file is not
+ * found.
  * To run the server locally, execute `node server.js` from the root of
  * the repository.  The server listens on port defined by the `PORT`
  * environment variable or defaults to 3000.
@@ -13,9 +14,8 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 
-// Determine the root directories for pages and public assets
+// Determine the root directory for pages and assets
 const ROOT = __dirname;
-const PUBLIC_DIR = path.join(ROOT, 'public');
 
 // Simple MIME type mapping for common file types
 const MIME_TYPES = {
@@ -73,6 +73,7 @@ function respondNotFound(res) {
 function handleRequest(req, res) {
   // Normalize and decode URL to prevent directory traversal attacks
   const urlPath = decodeURI(req.url.split('?')[0]);
+  const requestPath = urlPath.startsWith('/') ? urlPath.slice(1) : urlPath;
 
   // Serve the root path by defaulting to index.html
   if (urlPath === '/' || urlPath === '') {
@@ -85,8 +86,8 @@ function handleRequest(req, res) {
   // includes an extension, use it as is; otherwise append ".html". This
   // ensures URLs like "/posts/writesonic-vs-jasper" resolve correctly
   // while still allowing explicit ".html" requests.
-  if (urlPath.startsWith('/posts/')) {
-    let filePath = path.join(ROOT, urlPath);
+  if (requestPath.startsWith('posts/')) {
+    let filePath = path.join(ROOT, requestPath);
     // Append .html only if no file extension is present
     if (path.extname(filePath) === '') {
       filePath += '.html';
@@ -96,14 +97,14 @@ function handleRequest(req, res) {
   }
 
   // Serve other HTML pages directly (e.g., /ai-writing-tools.html)
-  if (urlPath.endsWith('.html')) {
-    const filePath = path.join(ROOT, urlPath);
+  if (requestPath.endsWith('.html')) {
+    const filePath = path.join(ROOT, requestPath);
     serveFile(res, filePath);
     return;
   }
 
-  // Serve static assets from the public directory
-  const assetPath = path.join(PUBLIC_DIR, urlPath);
+  // Serve static assets from the project root (including /images, CSS, JS)
+  const assetPath = path.join(ROOT, requestPath);
   if (fs.existsSync(assetPath) && fs.statSync(assetPath).isFile()) {
     serveFile(res, assetPath);
     return;
