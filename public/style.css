@@ -1,0 +1,281 @@
+/*
+ * Global styles for the affiliate website.  The design is inspired by modern
+ * SaaS landing pages with a clean layout, generous spacing, and a calming
+ * blue‑to‑purple gradient.  These rules apply to all pages to ensure a
+ * consistent look and feel.  You can modify the variables defined in
+ * :root to quickly change the colour palette or font families across the
+ * site.
+ */
+
+/* Colour palette variables */
+:root {
+  /* Updated colour palette for a brighter, modern feel reminiscent of a Google‑like UI.  */
+  --primary-start: #0077ff; /* start of primary gradient (vibrant blue) */
+  --primary-end: #00c6ff;   /* end of primary gradient (aqua) */
+  --text-color: #202124;    /* dark grey for primary text */
+  --text-light: #5f6368;    /* medium grey for secondary text */
+  --background: #f9fafb;    /* very light grey background */
+  --cta-bg: #0077ff;        /* call‑to‑action button background */
+  --cta-bg-hover: #005ecb;  /* CTA hover colour */
+  --cta-text: #ffffff;      /* CTA text colour */
+  --border-color: #e2e8f0;  /* subtle border colour */
+  --max-width: 1200px;      /* maximum content width */
+  --radius: 8px;            /* border radius */
+  --transition: 0.3s ease;  /* transition for interactive elements */
+}
+
+/* Base element resets */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  line-height: 1.6;
+  color: var(--text-color);
+  background-color: var(--background);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+  border-radius: var(--radius);
+}
+
+a {
+  color: var(--primary-start);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+a:hover {
+  color: var(--primary-end);
+}
+
+/* Layout container */
+.container {
+  width: 90%;
+  max-width: var(--max-width);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Navigation bar */
+.navbar {
+  width: 100%;
+  /* Use a light background with a coloured bottom border for a cleaner look */
+  background-color: var(--background);
+  border-bottom: 2px solid var(--primary-start);
+  padding: 1rem 0;
+  color: var(--text-color);
+}
+
+.navbar .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar .logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary-start);
+}
+
+.navbar nav a {
+  margin-left: 1.5rem;
+  color: var(--primary-start);
+  font-weight: 500;
+}
+
+.navbar nav a:hover {
+  color: var(--primary-end);
+  text-decoration: underline;
+}
+
+/* Hero section */
+.hero {
+  padding: 4rem 2rem 3rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2rem;
+  /* Add a subtle card‑like background to hero sections */
+  background: linear-gradient(180deg, #ffffff 0%, #f4f8fb 100%);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.hero-image {
+  flex: 1 1 45%;
+  min-width: 280px;
+}
+
+.hero-content {
+  flex: 1 1 50%;
+  min-width: 280px;
+}
+
+.hero-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(90deg, var(--primary-start), var(--primary-end));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-content p {
+  font-size: 1.125rem;
+  margin-bottom: 1.5rem;
+  color: var(--text-light);
+}
+
+.cta-button {
+  display: inline-block;
+  background-color: var(--cta-bg);
+  color: var(--cta-text);
+  padding: 0.8rem 2rem;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background-color var(--transition);
+}
+
+.cta-button:hover {
+  background-color: var(--cta-bg-hover);
+}
+
+/* Keyword list styling for the home page */
+.keywords-list {
+  list-style-type: disc;
+  max-width: 600px;
+  margin: 1rem auto;
+  padding-left: 1.5rem;
+  color: var(--text-light);
+  text-align: left;
+}
+
+.keywords-list li {
+  margin: 0.4rem 0;
+}
+
+/* Section styling */
+section {
+  padding: 2.5rem 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+section:last-of-type {
+  border-bottom: none;
+}
+
+section h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  background: linear-gradient(90deg, var(--primary-start), var(--primary-end));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+section p {
+  max-width: 800px;
+  margin: 0.5rem auto;
+  color: var(--text-light);
+  text-align: center;
+}
+
+/* Card grid for articles */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.card {
+  background-color: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.card img {
+  margin-bottom: 1rem;
+  height: 160px;
+  object-fit: cover;
+  border-radius: var(--radius);
+}
+
+.card h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.card p {
+  flex-grow: 1;
+  color: var(--text-light);
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+
+.card .read-more {
+  align-self: flex-start;
+  background-color: var(--primary-start);
+  color: var(--cta-text);
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+  transition: background-color var(--transition);
+}
+
+.card .read-more:hover {
+  background-color: var(--primary-end);
+}
+
+/* Footer */
+.footer {
+  background-color: #f3f4f6;
+  padding: 2rem 0;
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--text-light);
+}
+
+.footer a {
+  color: var(--primary-start);
+  font-weight: 500;
+}
+
+.faq {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  margin-bottom: 1.5rem;
+}
+
+.faq-item h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.faq-item p {
+  color: var(--text-light);
+  font-size: 0.95rem;
+}
