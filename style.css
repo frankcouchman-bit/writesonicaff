@@ -418,6 +418,30 @@ li {
   max-width: 700px;
 }
 
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1rem;
+}
+
+.chip {
+  padding: 0.55rem 0.9rem;
+  border-radius: 999px;
+  background: linear-gradient(120deg, rgba(124, 107, 255, 0.25), rgba(92, 244, 255, 0.2));
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  font-weight: 600;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.chip:hover,
+.chip:focus-visible {
+  color: #fff;
+  border-color: rgba(255, 122, 209, 0.8);
+  box-shadow: 0 14px 40px rgba(92, 244, 255, 0.35);
+}
+
 /* Cards & grids */
 .grid {
   display: grid;
@@ -700,6 +724,21 @@ body > p {
 .article-shell h4 {
   margin: 1.2rem 0 0.6rem;
   text-align: left;
+  position: relative;
+  padding-left: 0.9rem;
+}
+
+.article-shell h2::before,
+.article-shell h3::before,
+.article-shell h4::before {
+  content: '“';
+  position: absolute;
+  left: -2px;
+  top: -6px;
+  color: var(--accent);
+  font-size: 1.4rem;
+  line-height: 1;
+  opacity: 0.8;
 }
 
 .article-shell ul,
