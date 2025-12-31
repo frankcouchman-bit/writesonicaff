@@ -250,6 +250,7 @@ img {
   letter-spacing: 0.3px;
   box-shadow: var(--glow);
   transition: transform var(--transition), box-shadow var(--transition), filter var(--transition);
+  animation: glowPulse 2.6s ease-in-out infinite;
 }
 
 /* Article depth + CTA grid */
@@ -332,6 +333,21 @@ img {
   color: var(--text-color);
   border: 1px solid var(--border-color);
   box-shadow: none;
+}
+
+@keyframes glowPulse {
+  0% {
+    box-shadow: 0 12px 35px rgba(92, 244, 255, 0.35);
+    transform: translateY(0);
+  }
+  50% {
+    box-shadow: 0 16px 55px rgba(255, 122, 209, 0.4);
+    transform: translateY(-1px) scale(1.01);
+  }
+  100% {
+    box-shadow: 0 12px 35px rgba(92, 244, 255, 0.35);
+    transform: translateY(0);
+  }
 }
 
 /* Sections */
